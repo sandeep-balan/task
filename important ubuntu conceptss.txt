@@ -1,0 +1,96 @@
+Font - @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+
+
+
+1.while working on nodejs we can only integrate backend data with frontend using 'ejs' file:
+<% %> ---> for tags like {,}
+<%= %> ---> for values like <% arr.forEach((element)=>{ %>
+				<h1>arr.name</h1>
+				<%}%>
+				
+	for rendering the ejs file it shows error to get rid of this we can use 
+	app.set("views",__dirname+"/view");
+	app.set("view engine",'ejs')
+	
+	app.render("index"); where index is the name of the ejs file called "index.ejs"
+	
+	
+	To include the css properties in ejs in nodejs
+	use:
+	app.use(express.static(__dirname));
+				
+2. input tag should have "name" attribute because we can get the value by req.body.name
+using id attribute we can also get the value by document.getElementById("ff").value
+
+3. For connecting the databse "databse.js"
+
+	const mysql = require("mysql");
+const conn = mysql.createConnection({
+    host:"localhost",
+    user:"root",
+    password:"root123123123",
+    database:"student_register"
+})
+conn.connect((err)=>{
+    
+    if(err){
+        console.log(err);
+    }
+    else{
+        console.log("Connected to the database successfully");
+    }
+})
+module.exports = conn;
+
+
+4.For inserting a value in the table in nodejs
+const db = require("./database.js");
+app.post("/",(req,res)=>{
+    var d = req.body;
+    // res.send(req.body);
+    console.log(req.body);
+    var sql = "INSERT INTO details (firstname,lastname, email,dob,gender,address1,address2,city,zipcode,country) values (?,?,?,?,?,?,?,?,?,?)";
+    db.query(sql,[d.firstname,d.lastname,d.email,d.dob,d.gender,d.Address_Line_1,d.Address_Line_2,d.City,d.Zipcode,d.Country],(err,data)=>{
+        if(err) throw err;
+        
+        console.log("Updated successfully");
+    });
+    res.redirect('/get');
+    
+})
+5. Connecting the instance with putty:
+	i)download putty
+	ii)go to puttygen and click "load" and upload the keypair which was downloaded at the aws console website at the time of creating
+	iii) click on generate private key on puttygen which will download the private key
+	iv)go to putty app and click on session and specify the public ipv4 ip address which was in the console instance.
+	v)go to SSH in the putty and go to auth and specify the private key by uploading it.
+	vi)click open and it will show the console
+6. for installing mysql in ubuntu
+
+i)go to security bounds and select add rule and click mysql/aurora with port 3306
+ii) go to the console and write the foollowing commands
+		
+		sudo apt update
+		sudo apt install -y mariadb-server
+		sudo apt enable mariadb
+		sudo apt start mariadb
+		sudo mysql_secure_installation
+		
+for running mysql shell--->		mysql -h localhost -u root -p
+
+
+7.In ubuntu we can install mysql-server
+
+8.Git push commands
+
+i) git init
+ii) git add .
+iii) git commit -m "first Commit"
+iv) git branch -M Main
+v) git remote add origin url
+vi) git push -u origin main
+
+
+9. remove the .git file
+rm -rf .git

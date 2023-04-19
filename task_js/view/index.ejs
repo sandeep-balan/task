@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            border: 1px solid #123;
+            flex-direction: column;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+            
+        }
+        input{
+            height: 25px;
+        }
+        label{
+            /* display:block; */
+            margin : 10px 0px;
+        }
+        .submit{
+            width: 90px;
+            margin: 20px auto;
+        }
+        .a{
+            display: flex;
+            margin-top: 20px ;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        
+        
+        <form action="/" method="post">
+          <label for="name">Name</label>
+          <input type="text" name="name">
+          <label for="age">Age</label>
+          <input type="number" name="age">
+          <label for="phone_number">Phone Number</label>
+          <input type="tel" name="phno">
+         
+          <div class="a">
+            <input class="submit" type="submit" value="Submit">
+            <div class="show-list"><a href="http://localhost:3000/get"><input type="button" value="Show Lists"></a></div></div>
+            
+        </form>
+      </div>
+</body>
+</html>
